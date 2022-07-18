@@ -1,15 +1,14 @@
-version: '3.1'
-
+version: "2.1"
 services:
-
-  db:
-    image: mariadb:latest
-    restart: always
-      - 3306:3306
-    volumes:
-      - ~/apps/mariadb:/var/lib/mysql
+  mariadb:
+    image: lscr.io/linuxserver/mariadb:latest
+    container_name: mariadb
     environment:
-      - MYSQL_ROOT_PASSWORD=Passw0rd@01
-      - MYSQL_PASSWORD=Passw0rd@001
-      - MYSQL_USER=test
-      - MYSQL_DATABASE=newDB
+      - PUID=1000
+      - PGID=1000
+      - MYSQL_ROOT_PASSWORD=YOurR00tPAsswOrd
+    volumes:
+      - /home/rterrero/mariadb:/config
+    ports:
+      - 3306:3306
+    restart: unless-stopped
