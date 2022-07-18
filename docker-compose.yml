@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+
+  db:
+    image: mariadb:latest
+    restart: always
+      - 3306:3306
+    volumes:
+      - ~/apps/mariadb:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=Passw0rd@01
+      - MYSQL_PASSWORD=Passw0rd@001
+      - MYSQL_USER=test
+      - MYSQL_DATABASE=newDB
